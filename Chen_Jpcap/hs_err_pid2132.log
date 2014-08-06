@@ -1,0 +1,176 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6d9617c2, pid=2132, tid=7424
+#
+# JRE version: 6.0_38-b04
+# Java VM: Java HotSpot(TM) Client VM (20.13-b02 mixed mode, sharing windows-x86 )
+# Problematic frame:
+# V  [jvm.dll+0xa17c2]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x021fa400):  JavaThread "main" [_thread_in_vm, id=7424, stack(0x00200000,0x00250000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x00000000, EBX=0x021fa400, ECX=0x00000006, EDX=0x0024f61e
+ESP=0x0024f58c, EBP=0x0024f5a8, ESI=0x00000000, EDI=0x0046fd70
+EIP=0x6d9617c2, EFLAGS=0x00010246
+
+Top of Stack: (sp=0x0024f58c)
+0x0024f58c:   0046fd70 021fa528 00000000 021fa400
+0x0024f59c:   00000000 021fa400 00000000 0024f618
+0x0024f5ac:   10003ba2 021fa400 00000000 00000000
+0x0024f5bc:   00000006 0024f61e 0024fca0 0024f618
+0x0024f5cc:   0024fca0 10002fe5 00000000 0024f618
+0x0024f5dc:   00000001 021fa528 0024fca0 0024fca4
+0x0024f5ec:   6db03f30 00000000 0024fca0 10002e17
+0x0024f5fc:   10002e47 0024fca0 ffffffff 021fa400 
+
+Instructions: (pc=0x6d9617c2)
+0x6d9617a2:   c0 89 5d 08 89 5d f0 c7 45 f4 00 00 00 00 74 08
+0x6d9617b2:   8d 4d f0 e8 46 10 09 00 8b 75 10 85 f6 8b 45 0c
+0x6d9617c2:   8b 10 7c 50 8b 45 14 85 c0 7c 49 8b 7a 08 8d 0c
+0x6d9617d2:   06 3b cf 77 3f 85 c0 7e 22 8b 4a 04 8b 49 0c 8b 
+
+
+Register to memory mapping:
+
+EAX=0x00000000 is an unknown value
+EBX=0x021fa400 is a thread
+ECX=0x00000006 is an unknown value
+EDX=0x0024f61e is pointing into the stack for thread: 0x021fa400
+ESP=0x0024f58c is pointing into the stack for thread: 0x021fa400
+EBP=0x0024f5a8 is pointing into the stack for thread: 0x021fa400
+ESI=0x00000000 is an unknown value
+EDI=0x0046fd70 is an unknown value
+
+
+Stack: [0x00200000,0x00250000],  sp=0x0024f58c,  free space=317k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0xa17c2]
+C  [Jpcap.dll+0x3ba2]  Java_jpcap_JpcapWriter_writePacket+0x662
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  jpcap.JpcapSender.nativeSendPacket(Ljpcap/packet/Packet;)V+0
+j  jpcap.JpcapSender.sendPacket(Ljpcap/packet/Packet;)V+19
+j  com.test.Attack.main([Ljava/lang/String;)V+125
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x004c1400 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=8268, stack(0x04600000,0x04650000)]
+  0x004bcc00 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=8520, stack(0x04570000,0x045c0000)]
+  0x004bb800 JavaThread "Attach Listener" daemon [_thread_blocked, id=7316, stack(0x044e0000,0x04530000)]
+  0x004b8800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1256, stack(0x04450000,0x044a0000)]
+  0x004ac800 JavaThread "Finalizer" daemon [_thread_blocked, id=2608, stack(0x043c0000,0x04410000)]
+  0x004ab400 JavaThread "Reference Handler" daemon [_thread_blocked, id=6488, stack(0x04330000,0x04380000)]
+=>0x021fa400 JavaThread "main" [_thread_in_vm, id=7424, stack(0x00200000,0x00250000)]
+
+Other Threads:
+  0x0046e800 VMThread [stack: 0x042a0000,0x042f0000] [id=8728]
+  0x004e4800 WatcherThread [stack: 0x04690000,0x046e0000] [id=8904]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 4928K, used 501K [0x24170000, 0x246c0000, 0x296c0000)
+  eden space 4416K,  11% used [0x24170000, 0x241ed408, 0x245c0000)
+  from space 512K,   0% used [0x245c0000, 0x245c0000, 0x24640000)
+  to   space 512K,   0% used [0x24640000, 0x24640000, 0x246c0000)
+ tenured generation   total 10944K, used 0K [0x296c0000, 0x2a170000, 0x34170000)
+   the space 10944K,   0% used [0x296c0000, 0x296c0000, 0x296c0200, 0x2a170000)
+ compacting perm gen  total 12288K, used 440K [0x34170000, 0x34d70000, 0x38170000)
+   the space 12288K,   3% used [0x34170000, 0x341de0a0, 0x341de200, 0x34d70000)
+    ro space 10240K,  55% used [0x38170000, 0x386f1418, 0x386f1600, 0x38b70000)
+    rw space 12288K,  55% used [0x38b70000, 0x392146a0, 0x39214800, 0x39770000)
+
+Code Cache  [0x02240000, 0x022b8000, 0x04240000)
+ total_blobs=143 nmethods=12 adapters=68 free_code_cache=33085312 largest_free_block=0
+
+Dynamic libraries:
+0x00400000 - 0x00425000 	F:\Program Files (x86)\Java\jdk1.6.0_38\bin\javaw.exe
+0x77b20000 - 0x77ca0000 	C:\Windows\SysWOW64\ntdll.dll
+0x76000000 - 0x76110000 	C:\Windows\syswow64\kernel32.dll
+0x77230000 - 0x77277000 	C:\Windows\syswow64\KERNELBASE.dll
+0x77080000 - 0x77120000 	C:\Windows\syswow64\ADVAPI32.dll
+0x76a80000 - 0x76b2c000 	C:\Windows\syswow64\msvcrt.dll
+0x77060000 - 0x77079000 	C:\Windows\SysWOW64\sechost.dll
+0x76110000 - 0x76200000 	C:\Windows\syswow64\RPCRT4.dll
+0x750c0000 - 0x75120000 	C:\Windows\syswow64\SspiCli.dll
+0x750b0000 - 0x750bc000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x765d0000 - 0x766d0000 	C:\Windows\syswow64\USER32.dll
+0x76540000 - 0x765d0000 	C:\Windows\syswow64\GDI32.dll
+0x76400000 - 0x7640a000 	C:\Windows\syswow64\LPK.dll
+0x77120000 - 0x771bd000 	C:\Windows\syswow64\USP10.dll
+0x75130000 - 0x75190000 	C:\Windows\system32\IMM32.DLL
+0x76d90000 - 0x76e5c000 	C:\Windows\syswow64\MSCTF.dll
+0x74a60000 - 0x74a89000 	C:\Windows\SysWOW64\nvinit.dll
+0x0f000000 - 0x0f006000 	C:\Program Files (x86)\NVIDIA Corporation\CoProcManager\detoured.dll
+0x73a30000 - 0x73a57000 	C:\Program Files (x86)\NVIDIA Corporation\CoProcManager\nvd3d9wrap.dll
+0x77280000 - 0x7741d000 	C:\Windows\syswow64\SETUPAPI.dll
+0x77420000 - 0x77447000 	C:\Windows\syswow64\CFGMGR32.dll
+0x751a0000 - 0x7522f000 	C:\Windows\syswow64\OLEAUT32.dll
+0x762a0000 - 0x763fc000 	C:\Windows\syswow64\ole32.dll
+0x76520000 - 0x76532000 	C:\Windows\syswow64\DEVOBJ.dll
+0x73a10000 - 0x73a2e000 	C:\Program Files (x86)\NVIDIA Corporation\CoProcManager\nvdxgiwrap.dll
+0x7c340000 - 0x7c396000 	F:\Program Files (x86)\Java\jdk1.6.0_38\jre\bin\msvcr71.dll
+0x6d8c0000 - 0x6db70000 	F:\Program Files (x86)\Java\jdk1.6.0_38\jre\bin\client\jvm.dll
+0x76410000 - 0x76442000 	C:\Windows\syswow64\WINMM.dll
+0x749a0000 - 0x749ec000 	C:\Windows\system32\apphelp.dll
+0x6d870000 - 0x6d87c000 	F:\Program Files (x86)\Java\jdk1.6.0_38\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	F:\Program Files (x86)\Java\jdk1.6.0_38\jre\bin\java.dll
+0x6d8b0000 - 0x6d8bf000 	F:\Program Files (x86)\Java\jdk1.6.0_38\jre\bin\zip.dll
+0x10000000 - 0x10028000 	C:\Windows\System32\Jpcap.dll
+0x76450000 - 0x76485000 	C:\Windows\syswow64\WS2_32.dll
+0x76bc0000 - 0x76bc6000 	C:\Windows\syswow64\NSI.dll
+0x048e0000 - 0x0492c000 	C:\Windows\system32\wpcap.dll
+0x02200000 - 0x02218000 	C:\Windows\system32\packet.dll
+0x74e20000 - 0x74e29000 	C:\Windows\system32\VERSION.dll
+0x74d20000 - 0x74d3c000 	C:\Windows\system32\iphlpapi.dll
+0x74d10000 - 0x74d17000 	C:\Windows\system32\WINNSI.DLL
+0x74870000 - 0x7487d000 	C:\Windows\system32\dhcpcsvc6.DLL
+0x74850000 - 0x74862000 	C:\Windows\system32\dhcpcsvc.DLL
+0x6d6b0000 - 0x6d6c3000 	F:\Program Files (x86)\Java\jdk1.6.0_38\jre\bin\net.dll
+0x74920000 - 0x7495c000 	C:\Windows\system32\mswsock.dll
+0x73790000 - 0x73796000 	C:\Windows\System32\wship6.dll
+0x76490000 - 0x76495000 	C:\Windows\system32\PSAPI.DLL
+
+VM Arguments:
+jvm_args: -Dfile.encoding=GBK 
+java_command: com.test.Attack
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=G:\glassfish4\jdk7
+JRE_HOME=G:\glassfish4\jdk7\jre
+CLASSPATH=.; G:\glassfish4\jdk7\lib\dt.jar; G:\glassfish4\jdk7\lib\tools.jar;G:\glassfish4\jdk7\lib\javax.servlet.jar;G:\glassfish4\jdk7\lib\javamail-1.4.7\mail.jar;G:\glassfish4\jdk7\lib\jaf-1.1.1\activation.jar;F:\Tomcat\apache-tomcat-7.0.52\lib\servlet-api.jar;F:\Tomcat\apache-tomcat-7.0.52\lib\jsp-api.jar;g:\jmf\lib\sound.jar;g:\jmf\lib\jmf.jar;g:\jmf\lib
+PATH=G:/glassfish4/jdk7/bin/../jre/bin/client;G:/glassfish4/jdk7/bin/../jre/bin;G:/glassfish4/jdk7/bin/../jre/lib/i386;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;G:\glassfish4\jdk7\bin;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter;;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;G:\MinGW\bin;F:\Tomcat\apache-tomcat-7.0.52\lib;F:\Tomcat\apache-tomcat-7.0.52\lib\servlet-api.jar;F:\Tomcat\apache-tomcat-7.0.52\lib\jsp-api.jar;F:\Tomcat\apache-tomcat-7.0.52\lib;F:\Tomcat\apache-tomcat-7.0.52\bin;F:\MySQL\MySQL Utilities 1.3.6\;F:\MySQL\MySQL Server 5.6\bin;F:\eclipse;
+USERNAME=acer
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 4028780k(1137076k free), swap 8055696k(3632688k free)
+
+vm_info: Java HotSpot(TM) Client VM (20.13-b02) for windows-x86 JRE (1.6.0_38-ea-b04), built on Oct 31 2012 01:45:33 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Thu Apr 10 23:44:31 2014
+elapsed time: 0 seconds
+
